@@ -1,8 +1,12 @@
-# Ignore all .nc files in the data folder
-data/**/*.nc
+# Ignore all .nc and .zarr files in the data folder
+data/*.nc
+data/*.zarr
+data/*.zarr/
 
-# Ignore all .nc files in the output folder
-output/**/*.nc
+# Ignore all .nc and .zarr files in the output folder
+outputs/*.nc
+outputs/*.zarr
+outputs/*.zarr/
 
 # Optionally, ignore the entire data and output folders
 # Uncomment the following lines if you want to ignore these folders completely
@@ -26,3 +30,7 @@ env/
 # Operating system files
 .DS_Store
 Thumbs.db
+
+# Zarr-specific files and folders
+*.zarr
+*.zarr/
