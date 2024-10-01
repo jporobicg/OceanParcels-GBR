@@ -1,0 +1,28 @@
+# Ignore all .nc files in the data folder
+data/**/*.nc
+
+# Ignore all .nc files in the output folder
+output/**/*.nc
+
+# Optionally, ignore the entire data and output folders
+# Uncomment the following lines if you want to ignore these folders completely
+# data/
+# output/
+
+# Python-related files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.env
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
