@@ -21,14 +21,22 @@ from displacement import make_landmask, create_displacement_field, distance_to_s
 from seeding import seed_polygon_shape, release_times_per_day
 from particles import create_particle_set, DeleteParticle, GBRVerticalMovement, ageing, FollowSurface, WindAdvectionRK4
 
-# Constants (assuming these are defined elsewhere in your project)
-TIME_ZONE = 'GMT+10'  # Example value, adjust as needed
-RELEASE_DEPTH = -1  # Example value, adjust as needed
-WIND_PERCENTAGE = 3  # Example value, adjust as needed
-#DATA_PATH = '/scratch2/por07g/Data/GBR1_Simple/'
-DATA_PATH = '/home/por07g/Documents/Projects/GBR_modeling/GBR_oceanparcels/ocean_parcels_gbr/data/'
-OUTPUT_PATH = '/home/por07g/Documents/Projects/GBR_modeling/GBR_oceanparcels/ocean_parcels_gbr/outputs/'
-#OUTPUT_PATH = '/datasets/work/oa-coconet/work/OceanParcels_outputs/Coral'
+# Constants and Paths
+TIME_ZONE = 'GMT+10'
+RELEASE_DEPTH = -1
+WIND_PERCENTAGE = 3
+
+# Local paths
+LOCAL_DATA_PATH = '/home/por07g/Documents/Projects/GBR_modeling/GBR_oceanparcels/ocean_parcels_gbr/data/'
+LOCAL_OUTPUT_PATH = '/home/por07g/Documents/Projects/GBR_modeling/GBR_oceanparcels/ocean_parcels_gbr/outputs/'
+
+# HPC or alternative paths
+HPC_DATA_PATH = '/scratch2/por07g/Data/GBR1_Simple/'
+HPC_OUTPUT_PATH = '/datasets/work/oa-coconet/work/OceanParcels_outputs/Coral'
+
+# Set the active paths here
+DATA_PATH = LOCAL_DATA_PATH
+OUTPUT_PATH = LOCAL_OUTPUT_PATH
 
 def main():
     # Parse command-line arguments
