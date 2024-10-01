@@ -78,12 +78,4 @@ module load python
 python OceanParcels_GBR1_index_search_sea_surface_CoTs_no_wind_drift_Sev.py \
     \$run ${dates[i]} $num_particles_per_day" > job_Sev_$i.sh
 
-#    # Submit the job and save the job ID
-#    if [ $i -eq 0 ]; then
-#        # The first job has no dependencies
-#        jobid=$(sbatch job_Sev_$i.sh | awk '{print $4}')
-#    else
-#        # Subsequent jobs depend on the previous job
-#        jobid=$(sbatch --dependency=afterany:$jobid job_Sev_$i.sh | awk '{print $4}')
-#    fi
 done
