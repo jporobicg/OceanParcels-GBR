@@ -32,8 +32,8 @@ def parse_args():
     num_particles_per_day = int(sys.argv[6])
     return polygon_id, release_start_day, release_start_hour, release_end_day, release_end_hour, num_particles_per_day
 
-def setup_paths(data_path):
-    files = sorted(glob(data_path+'gbr1_simple_*.nc'))
+def setup_paths(data_path, hydro_path):
+    files = sorted(glob(hydro_path+'gbr1_simple_*.nc'))
     mesh_mask = data_path + 'coordinates.nc'
     folderShape = data_path + "Shape_files/"
     originalfile = "gbr1_coral_1m_merged.shp"

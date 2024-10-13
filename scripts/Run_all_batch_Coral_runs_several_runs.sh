@@ -36,16 +36,16 @@ for i in ${!dates[@]}; do
     # Create a job script for this date
     echo "#!/bin/bash
 #SBATCH --account=OD-232538
-#SBATCH --time=4:00:00
+#SBATCH --time=7:00:00
 #SBATCH --mem=5g
 #SBATCH --cpus-per-task=1
-#SBATCH --array=0-3805  # 3806 jobs
+#SBATCH --array=0-3805%500  # 3806 jobs
 
 module load python
 
 (( run = SLURM_ARRAY_TASK_ID ))
 
-python src/main.py \
+python ../src/main.py \
     \$run ${dates[i]} $num_particles_per_day" > Coral_run_job_$i.sh
 
 done

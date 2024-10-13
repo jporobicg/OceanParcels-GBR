@@ -31,19 +31,21 @@ LOCAL_DATA_PATH = '/home/por07g/Documents/Projects/GBR_modeling/GBR_oceanparcels
 LOCAL_OUTPUT_PATH = '/home/por07g/Documents/Projects/GBR_modeling/GBR_oceanparcels/ocean_parcels_gbr/outputs/'
 
 # HPC or alternative paths
-HPC_DATA_PATH = '/scratch2/por07g/Data/GBR1_Simple/'
-HPC_OUTPUT_PATH = '/datasets/work/oa-coconet/work/OceanParcels_outputs/Coral'
+HPC_HYDRO_PATH  = '/scratch3/por07g/Data/GBR1_Simple/'
+HPC_DATA_PATH = '/datasets/work/oa-coconet/work/OceanParcels-GBR/data/'
+HPC_OUTPUT_PATH = '/datasets/work/oa-coconet/work/OceanParcels-GBR/outputs/Coral/'
 
 # Set the active paths here
-DATA_PATH = LOCAL_DATA_PATH
-OUTPUT_PATH = LOCAL_OUTPUT_PATH
+DATA_PATH = HPC_DATA_PATH
+OUTPUT_PATH = HPC_OUTPUT_PATH
+HYDRO_PATH = HPC_HYDRO_PATH
 
 def main():
     # Parse command-line arguments
     polygon_id, release_start_day, release_start_hour, release_end_day, release_end_hour, num_particles_per_day = parse_args()
 
     # Setup paths and files
-    files, mesh_mask, shapefile = setup_paths(DATA_PATH)
+    files, mesh_mask, shapefile = setup_paths(DATA_PATH, HYDRO_PATH)
 
     # Load grid data
     grid = xr.open_dataset(mesh_mask)
@@ -79,7 +81,7 @@ def main():
               pset.Kernel(set_displacement) + pset.Kernel(ageing) + pset.Kernel(FollowSurface) + \
               pset.Kernel(GBRVerticalMovement)
 
-    pset.execute(kernels, runtime=timedelta(hours=5), dt=timedelta(minutes=30), output_file=pfile,
+    pset.execute(kernels, runtime=timedelta(days=35), dt=timedelta(minutes=30), output_file=pfile,
                  recovery={ErrorCode.ErrorOutOfBounds: DeleteParticle})
     ## check attributes for pfile
 
