@@ -9,7 +9,7 @@ outputs/*.zarr
 outputs/*.zarr/
 outputs/*.*
 **/outputs/*.*
-
+/outputs/
 # Optionally, ignore the entire data and output folders
 # Uncomment the following lines if you want to ignore these folders completely
 # data/
