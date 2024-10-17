@@ -93,7 +93,10 @@ def main():
     print(nc_output_file)
     ds.to_netcdf(nc_output_file)
     ds.close()
+    # remove the zarr file
+    os.remove(output_file)
 
+    # clean the output file
     clean_output_file(nc_output_file)
     print(f"NetCDF output saved to: {nc_output_file}")
 
