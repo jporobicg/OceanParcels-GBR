@@ -39,7 +39,7 @@ for i in ${!dates[@]}; do
 #SBATCH --time=7:00:00
 #SBATCH --mem=5g
 #SBATCH --cpus-per-task=1
-#SBATCH --array=0-3805%500  # 3806 jobs
+#SBATCH --array=0-3805%700  # 3806 jobs
 
 module load python
 
