@@ -14,7 +14,17 @@ folders=(
     "2017-10-08"
     "2017-11-06"
     "2017-12-06"
-    "2018-10-27"
+    "2018-11-25"
+    "2018-12-25"
+"2019-10-16"
+"2019-11-15"
+"2019-12-14"
+"2020-10-04"
+"2020-11-03"
+"2020-12-02"
+"2021-01-01"
+"2021-10-23"
+    
 )
 
 # Print the folders that will be processed
@@ -38,3 +48,5 @@ done
 echo "All .zarr files and directories have been removed."
 
 echo "All .zarr files and directories have been removed."
+
+
