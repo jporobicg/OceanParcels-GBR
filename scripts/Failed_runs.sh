@@ -28,9 +28,9 @@ dates=(
 wind_percentage=3
 missing_files=0
 small_files=0
-
+output_dir="../checks"
 # Create log files
-log_file="missing_files_log.txt"
+log_file="${output_dir}/missing_files_log.txt"
 echo "File Check Report" > "$log_file"
 date >> "$log_file"
 echo "-------------------" >> "$log_file"
@@ -40,7 +40,7 @@ echo "-------------------" >> "$log_file"
 # Loop through all dates
 for release_start_day in "${dates[@]}"; do
     echo "Checking files for date: $release_start_day"
-    rerun_file="Failed_run_${release_start_day}.txt"
+    rerun_file="${output_dir}/Failed_run_${release_start_day}.txt"
     > "$rerun_file"  # Create or clear the file
     
     # Loop through all polygon IDs (0-3805)
