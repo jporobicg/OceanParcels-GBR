@@ -36,3 +36,7 @@ Thumbs.db
 # Zarr-specific files and folders
 *.zarr
 *.zarr/
+
+# slurmp out files
+*.out
+*.out/
