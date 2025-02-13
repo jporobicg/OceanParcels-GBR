@@ -1,5 +1,6 @@
 #!/bin/bash
 
+date_id=$1
 # Root directory to search for .zarr files and directories
 root_dir="/datasets/work/oa-coconet/work/OceanParcels-GBR/outputs/Coral/"
 
@@ -16,36 +17,32 @@ folders=(
     "2017-12-06"
     "2018-11-25"
     "2018-12-25"
-"2019-10-16"
-"2019-11-15"
-"2019-12-14"
-"2020-10-04"
-"2020-11-03"
-"2020-12-02"
-"2021-01-01"
-"2021-10-23"
-    
+    "2019-10-16"
+    "2019-11-15"
+    "2019-12-14"
+    "2020-10-04"
+    "2020-11-03"
+    "2020-12-02"
+    "2021-01-01"
+    "2021-10-23"
 )
+# target folder
+target_folder=${folders[$date_id]}
 
 # Print the folders that will be processed
 echo "Folders to be processed:"
-printf '%s\n' "${folders[@]}"
+printf '%s\n' "$target_folder"
 
 # Loop through each folder
-for folder in "${folders[@]}"; do
-  full_path="$root_dir/$folder"
-  echo "Processing folder: $full_path"
+full_path="$root_dir/$target_folder"
+echo "Processing folder: $full_path"
   
-  # Find and remove .zarr directories and their contents
-  find "$full_path" -type d -name "*.zarr" -exec rm -rf {} +
+# Find and remove .zarr directories and their contents
+find "$full_path" -type d -name "*.zarr" -exec rm -rf {} +
+# Find and remove .zarr files
+find "$full_path" -type f -name "*.zarr" -delete
   
-  # Find and remove .zarr files
-  find "$full_path" -type f -name "*.zarr" -delete
-  
-  echo "Finished processing $full_path"
-done
-
-echo "All .zarr files and directories have been removed."
+echo "Finished processing $full_path"
 
 echo "All .zarr files and directories have been removed."
 
