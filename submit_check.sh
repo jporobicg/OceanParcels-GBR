@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#SBATCH --account=OD-232538
 #SBATCH --job-name=check_files
 #SBATCH --output=check_files_%j.log
 #SBATCH --error=check_files_%j.err
