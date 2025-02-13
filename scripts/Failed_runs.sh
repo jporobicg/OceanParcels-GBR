@@ -29,7 +29,7 @@ wind_percentage=3
 missing_files=0
 small_files=0
 
-# Create a log file
+# Create log files
 log_file="missing_files_log.txt"
 echo "File Check Report" > "$log_file"
 date >> "$log_file"
@@ -40,6 +40,8 @@ echo "-------------------" >> "$log_file"
 # Loop through all dates
 for release_start_day in "${dates[@]}"; do
     echo "Checking files for date: $release_start_day"
+    rerun_file="Failed_run_${release_start_day}.txt"
+    > "$rerun_file"  # Create or clear the file
     
     # Loop through all polygon IDs (0-3805)
     for polygon_id in $(seq 0 3805); do
@@ -47,6 +49,7 @@ for release_start_day in "${dates[@]}"; do
         
         if [ ! -f "$expected_file" ]; then
             echo "Missing: ${expected_file}" >> "$log_file"
+            echo -e "${polygon_id}\tMissing" >> "$rerun_file"
             ((missing_files++))
         else
             # Get file size in bytes
@@ -54,6 +57,7 @@ for release_start_day in "${dates[@]}"; do
             # 1MB = 1048576 bytes
             if [ "$size" -lt 1048576 ]; then
                 echo "Undersized ($(($size/1024))KB): ${expected_file}" >> "$log_file"
+                echo -e "${polygon_id}\tUndersized" >> "$rerun_file"
                 ((small_files++))
             fi
         fi
