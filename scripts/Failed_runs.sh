@@ -27,11 +27,14 @@ dates=(
 
 wind_percentage=3
 missing_files=0
+small_files=0
 
 # Create a log file
 log_file="missing_files_log.txt"
-echo "Missing Files Report" > "$log_file"
+echo "File Check Report" > "$log_file"
 date >> "$log_file"
+echo "-------------------" >> "$log_file"
+echo "Checking for missing or undersized files (< 1MB)" >> "$log_file"
 echo "-------------------" >> "$log_file"
 
 # Loop through all dates
@@ -42,15 +45,25 @@ for release_start_day in "${dates[@]}"; do
     for polygon_id in $(seq 0 3805); do
         expected_file="${PATH_TO_FILES}/GBR1_H2p0_Coral_Release_${release_start_day}_Polygon_${polygon_id}_Wind_${wind_percentage}_percent_displacement_field.nc"
         
-        if [ ! -d "$expected_file" ]; then
+        if [ ! -f "$expected_file" ]; then
             echo "Missing: ${expected_file}" >> "$log_file"
             ((missing_files++))
+        else
+            # Get file size in bytes
+            size=$(stat -f%z "$expected_file" 2>/dev/null || stat -c%s "$expected_file" 2>/dev/null)
+            # 1MB = 1048576 bytes
+            if [ "$size" -lt 1048576 ]; then
+                echo "Undersized ($(($size/1024))KB): ${expected_file}" >> "$log_file"
+                ((small_files++))
+            fi
         fi
     done
 done
 
 echo "-------------------" >> "$log_file"
 echo "Total missing files: $missing_files" >> "$log_file"
-echo "Check complete. Found $missing_files missing files."
+echo "Total undersized files: $small_files" >> "$log_file"
+echo "Total problematic files: $(($missing_files + $small_files))" >> "$log_file"
+echo "Check complete. Found $missing_files missing files and $small_files undersized files."
 echo "Details have been saved to $log_file"
 
