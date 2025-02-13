@@ -43,7 +43,7 @@ for release_start_day in "${dates[@]}"; do
     
     # Loop through all polygon IDs (0-3805)
     for polygon_id in $(seq 0 3805); do
-        expected_file="${PATH_TO_FILES}/GBR1_H2p0_Coral_Release_${release_start_day}_Polygon_${polygon_id}_Wind_${wind_percentage}_percent_displacement_field.nc"
+        expected_file="${PATH_TO_FILES}/${release_start_day}/GBR1_H2p0_Coral_Release_${release_start_day}_Polygon_${polygon_id}_Wind_${wind_percentage}_percent_displacement_field.nc"
         
         if [ ! -f "$expected_file" ]; then
             echo "Missing: ${expected_file}" >> "$log_file"
