@@ -28,5 +28,5 @@ for id in {0..19}; do
   time_diff=$((end_time - start_time))
 
   # Print a message and append it to the log file
-  echo "Job $id finished at $(date). Duration: $time_diff seconds." | tee -a failed_runs.log
+  echo "Job $id finished at $(date). Job_id $jobid Duration: $time_diff seconds." | tee -a failed_runs.log
 done
