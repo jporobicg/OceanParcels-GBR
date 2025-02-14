@@ -74,6 +74,14 @@ def main():
     x, y, z, area = seed_polygon_shape(shapefile, polygon_id, fieldset, num_particles, RELEASE_DEPTH)
     pset = create_particle_set(fieldset, x, y, z, release_times)
 
+    # find grid cell number where particle is
+    # this is critcal for dinding the location of the particles inside the model domain
+    # the issue is that in stretched grid, the simple searching algorith has difficulty finding the correct grid cell
+    for p in pset:
+        yi, xi = find_particle_index(grd_lat, grd_lon, p.lat, p.lon)
+        p.xi = np.array([xi], dtype=np.int32)
+        p.yi = np.array([yi], dtype=np.int32)
+
     # Setup output file
     output_file, pfile = setup_output_file(pset, OUTPUT_PATH, release_start_day, polygon_id, WIND_PERCENTAGE)
     # Execute particle tracking
