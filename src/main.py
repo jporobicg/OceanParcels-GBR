@@ -19,7 +19,7 @@ from inout import parse_args, setup_paths, setup_output_file, clean_output_file
 from fielsets import setup_fieldset, setup_wind_field, setup_displacement_field, setup_shore_fields
 from displacement import make_landmask, create_displacement_field, distance_to_shore, rotate_vector, set_displacement, displace
 from seeding import seed_polygon_shape, release_times_per_day
-from particles import create_particle_set, DeleteParticle, GBRVerticalMovement, ageing, FollowSurface, WindAdvectionRK4
+from particles import create_particle_set, DeleteParticle, GBRVerticalMovement, ageing, FollowSurface, WindAdvectionRK4, find_particle_index
 
 # Constants and Paths
 TIME_ZONE = 'GMT+10'
