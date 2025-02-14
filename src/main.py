@@ -1,5 +1,6 @@
 import sys
 import os
+import shutil
 
 # Get the directory of the current script
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -102,7 +103,7 @@ def main():
     ds.to_netcdf(nc_output_file)
     ds.close()
     # remove the zarr file
-    os.remove(output_file)
+    shutil.rmtree(output_file)
 
     # clean the output file
     clean_output_file(nc_output_file)
