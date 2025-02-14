@@ -36,7 +36,7 @@ for i in ${!dates[@]}; do
 current_day=${dates[i]%% T*}
 
 # Check if failed runs file exists and read it
-failed_runs_file="Failed_run_${current_day}.txt"
+failed_runs_file="../checks/Failed_run_${current_day}.txt"
 if [ ! -f "$failed_runs_file" ]; then
     echo "No failed runs file found for $current_day, skipping..."
     continue
@@ -60,6 +60,8 @@ echo "#!/bin/bash
 #SBATCH --time=10:00:00
 #SBATCH --mem=7g
 #SBATCH --cpus-per-task=1
+#SBATCH --output=/dev/null  # Discard output files
+#SBATCH --error=/dev/null   # Discard error files
 #SBATCH --array=$failed_runs_str%700  # Only run failed jobs
 
 module load python

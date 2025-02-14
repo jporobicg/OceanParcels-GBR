@@ -4,6 +4,8 @@
 #SBATCH --mem=5g
 #SBATCH --cpus-per-task=1
 #SBATCH --array=0-3805%700  # 3806 jobs
+#SBATCH --output=/dev/null  # Discard output files
+#SBATCH --error=/dev/null   # Discard error files
 
 module load python
 

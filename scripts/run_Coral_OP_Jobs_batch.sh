@@ -5,7 +5,7 @@ echo "" > run.log
 
 # Loop over the job scripts
 for id in {20..21}; do
-  script="jobs/Coral_run_job_${id}.sh"
+  script="../jobs/Coral_run_job_${id}.sh"
   
   # Record the start time
   start_time=$(date +%s)

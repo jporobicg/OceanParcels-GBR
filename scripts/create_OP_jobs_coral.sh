@@ -40,12 +40,14 @@ for i in ${!dates[@]}; do
 #SBATCH --mem=5g
 #SBATCH --cpus-per-task=1
 #SBATCH --array=0-3805%700  # 3806 jobs
+#SBATCH --output=/dev/null  # Discard output files
+#SBATCH --error=/dev/null   # Discard error files
 
 module load python
 
 (( run = SLURM_ARRAY_TASK_ID ))
 
 python ../src/main.py \
-    \$run ${dates[i]} $num_particles_per_day" > Coral_run_job_$i.sh
+    \$run ${dates[i]} $num_particles_per_day" > ../jobs/Coral_run_job_$i.sh
 
 done
