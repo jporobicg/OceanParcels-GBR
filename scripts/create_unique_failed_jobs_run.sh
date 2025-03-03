@@ -56,7 +56,8 @@ for i in ${!dates[@]}; do
     # Add each failed run and its corresponding date to the arrays
     for run in "${failed_runs[@]}"; do
         all_failed_runs+=("$run")
-        corresponding_dates+=("${dates[i]}")
+        # Quote the date string to preserve it as a single element
+        corresponding_dates+=("\"${dates[i]}\"")
     done
 done
 
