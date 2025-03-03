@@ -7,6 +7,7 @@ Checking files for date: 2016-12-16
 Checking files for date: 2017-10-08
 Checking files for date: 2017-11-06
 Checking files for date: 2017-12-06
+Checking files for date: 2018-10-27
 Checking files for date: 2018-11-25
 Checking files for date: 2018-12-25
 Checking files for date: 2019-10-16
@@ -17,5 +18,7 @@ Checking files for date: 2020-11-03
 Checking files for date: 2020-12-02
 Checking files for date: 2021-01-01
 Checking files for date: 2021-10-23
-Check complete. Found 1037 missing files and 5525 undersized files.
-Details have been saved to missing_files_log.txt
+Checking files for date: 2021-11-21
+Checking files for date: 2021-12-21
+Check complete. Found 4425 missing files and 321 undersized files.
+Details have been saved to ../checks/missing_files_log.txt
